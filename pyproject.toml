@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emores"
+version = "0.1.0"
+description = "Residual emotion steering for TTS: decompose a mixed-emotion steering vector into a shared axis and an emotion-carrying residual, and weight the two independently."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+# The rule, the composition and the anchored E-SIM arithmetic need nothing but array ops. Everything
+# heavier is an extra or an unpackaged dependency -- see the note below.
+dependencies = ["numpy>=1.21", "torch>=2.0"]
+
+[project.optional-dependencies]
+# Anchored E-SIM: emotion2vec runs under funasr, and the CosyVoice compatibility shim writes a temp wav.
+esim = ["funasr", "torchaudio"]
+
+[project.urls]
+Homepage = "https://github.com/wsssy/CoCoEmo"
+
+[tool.setuptools]
+# ONLY the library is packaged. scripts/ is deliberately NOT a package: it merges with CoCoEmo's scripts/
+# as a namespace package at runtime, which is how scripts/synthesize_emores.py reaches their
+# scripts/synthesize.py. Turning it into a package would shadow theirs and break that import.
+packages = ["emores"]
+
+# =====================================================================================================
+# WHAT PIP CANNOT INSTALL FOR YOU, AND WHY THERE IS NO requirements.txt PINNING THE WHOLE STACK
+#
+#   cocoemo   Required at runtime, not on PyPI. Clone https://github.com/wsssy/CoCoEmo and put it on
+#             PYTHONPATH. It is a dependency, not a vendored copy; see README.
+#
+#   backbone  IndexTTS-2 and CosyVoice2 have MUTUALLY INCOMPATIBLE dependency sets -- in our own runs
+#             neither environment can import the other's package -- so a single environment that serves
+#             both does not exist, and a lockfile claiming otherwise would be false. Install whichever
+#             backbone you intend to steer, in its own environment, and put this package on PYTHONPATH
+#             alongside it. The code is indifferent: it never imports a backbone directly.
+#
+#   weights   emotion2vec_plus_large and the backbone checkpoints are obtained under their own licences.
+#
+#   corpora   ESD / IEMOCAP / CREMA-D require individual agreements and cannot be fetched by a package
+#             manager at all.
+#
+# For the same reasons there is no Dockerfile: an image could not legally carry the weights or the
+# corpora, and could not hold both backbone environments at once, so it would encode a setup nobody can
+# actually run end to end.
+# =====================================================================================================
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint.isort]
+case-sensitive = false
+combine-as-imports = true
+detect-same-package = false
+order-by-type = false

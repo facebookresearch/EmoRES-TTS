@@ -1,0 +1,10 @@
+__pycache__/
+*.py[co]
+.venv/
+*.egg-info/
+# never commit corpus audio, model weights or fitted vectors -- see CONTRIBUTING.md
+*.wav
+*.pt
+*.npz
+*.ckpt
+*.safetensors
