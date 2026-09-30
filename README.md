@@ -18,7 +18,7 @@ EmoRES-TTS is a thin layer over [CoCoEmo](https://github.com/wsssy/CoCoEmo), whi
 is not vendored here.
 
 ```bash
-git clone <this-repo> EmoRES-TTS
+git clone https://github.com/facebookresearch/EmoRES-TTS.git
 git clone https://github.com/wsssy/CoCoEmo.git
 export PYTHONPATH=$PWD/EmoRES-TTS:$PWD/CoCoEmo
 ```
