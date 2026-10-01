@@ -1,6 +1,7 @@
 # EmoRES-TTS
 
 <p align="center">
+  <a href="https://huggingface.co/papers/2609.38157"><img alt="Hugging Face Paper" src="https://img.shields.io/badge/Hugging%20Face-Paper-yellow?logo=huggingface&logoColor=white"></a>
   <a href="https://arxiv.org/abs/2609.38157"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2609.38157-b31b1b?logo=arxiv&logoColor=white"></a>
   <a href="https://emorestts.github.io/"><img alt="Webpage" src="https://img.shields.io/badge/Website-Visit-orange?logo=googlechrome&logoColor=white"></a>
 </p>
