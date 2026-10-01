@@ -5,16 +5,14 @@
   <a href="https://emorestts.github.io/"><img alt="Webpage" src="https://img.shields.io/badge/Website-Visit-orange?logo=googlechrome&logoColor=white"></a>
 </p>
 
-**EmoRES-TTS: Residual-Enhanced Vector Steering for Emotional Speech Generation**<br>
-Kuan-Po Huang, Haohe Liu, Puyuan Peng, Haibin Wu, Zhaoheng Ni, Hung-yi Lee, Jinwon Lee, Neha Chachra<br>
-[[paper]](https://arxiv.org/abs/2609.38157)
+Official implementation for the paper [**EmoRES-TTS: Residual-Enhanced Vector Steering for Emotional Speech Generation**](https://arxiv.org/abs/2609.38157)<br>
 
 Residual emotion steering for emotional TTS generation. EmoRES decomposes a mixed-emotion steering vector into a shared axis and an
 emotion-carrying residual and weight the two independently.
 
 ## Installation
 
-EmoRES-TTS is a thin layer over [CoCoEmo](https://github.com/wsssy/CoCoEmo), which is a required dependency and
+EmoRES-TTS is implemented on top of [CoCoEmo](https://github.com/wsssy/CoCoEmo), which is a required dependency and
 is not vendored here.
 
 ```bash
